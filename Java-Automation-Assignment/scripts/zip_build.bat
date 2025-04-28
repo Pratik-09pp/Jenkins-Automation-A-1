@@ -14,7 +14,7 @@ set timestamp=%timestamp::=-%
 set timestamp=%timestamp: =%
 
 :: Create the zip file with the timestamp in its name using 7-Zip
-7z a ..\archives\build_archive_%timestamp%.zip ..\build\*
+"C:\Program Files\7-Zip\7z.exe" a ..\archives\build_archive_%timestamp%.zip ..\build\*
 
 :: Check if the zipping was successful
 IF %ERRORLEVEL% EQU 0 (
