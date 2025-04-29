@@ -14,7 +14,7 @@ REM Read the PAT passed from Jenkins
 set GITHUB_PAT=%1
 
 REM Set the GitHub URL using username and dynamic PAT
-set GITHUB_URL=https://<your-username>:%GITHUB_PAT%@github.com/Pratik-09pp/Jenkins-Automation-A-1.git
+set GITHUB_URL=https://Pratik-09pp:%GITHUB_PAT%@github.com/Pratik-09pp/Jenkins-Automation-A-1.git
 
 REM Check if .git exists
 IF NOT EXIST .git (
