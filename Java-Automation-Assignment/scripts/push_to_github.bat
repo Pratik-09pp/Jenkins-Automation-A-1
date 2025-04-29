@@ -3,15 +3,14 @@ echo -----------------------------------------------------
 echo Pushing archive file to GitHub...
 echo -----------------------------------------------------
 
-REM Move to project root
+REM Move to Java-Automation-Assignment folder
 cd ..
 
-REM Move into the actual project (Java-Automation-Assignment) where .git exists
-cd Java-Automation-Assignment
+REM Now you are inside Java-Automation-Assignment (No need for another cd)
 
-REM Set important paths (relative to Java-Automation-Assignment)
+REM Set important paths
 set ARCHIVE_DIR=archives
-set DEST_DIR=../Build-Archieves
+set DEST_DIR=..\Build-Archieves
 
 REM Read the PAT passed from Jenkins
 set GITHUB_PAT=%1
@@ -25,7 +24,7 @@ IF NOT EXIST .git (
     exit /b 1
 )
 
-REM Find the zip file (assuming only one zip)
+REM Find the zip file (assuming only one zip file)
 for %%f in (%ARCHIVE_DIR%\*.zip) do set ZIP_FILE=%%f
 
 REM Copy the zip file to Build-Archieves folder
@@ -47,7 +46,7 @@ IF %ERRORLEVEL% EQU 0 (
     exit /b 1
 )
 
-REM Go back to scripts folder
+REM Return back to scripts folder
 cd scripts
 
 echo -----------------------------------------------------
