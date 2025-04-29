@@ -31,6 +31,9 @@ REM Copy the zip file to Build-Archieves folder
 echo Copying %ZIP_FILE% to %DEST_DIR%...
 copy "%ZIP_FILE%" "%DEST_DIR%"
 
+
+git checkout -B main
+
 REM Stage the copied file for commit
 echo Staging file for Git commit...
 git add "%DEST_DIR%\%ZIP_FILENAME%"
