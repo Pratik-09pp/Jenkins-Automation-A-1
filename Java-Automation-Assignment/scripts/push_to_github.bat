@@ -3,12 +3,10 @@ echo -----------------------------------------------------
 echo Pushing archive file to GitHub...
 echo -----------------------------------------------------
 
-REM Move up one directory (into Java-Automation-Assignment folder)
-cd ..
 
 REM Set important paths
-set "ARCHIVE_DIR=archives"
-set "DEST_DIR=..\Build-Archieves"
+set "ARCHIVE_DIR=Java-Automation-Assignment\archives"
+set "DEST_DIR=Build-Archieves"
 
 REM Read the GitHub Personal Access Token passed from Jenkins
 set "GITHUB_PAT=%1"
