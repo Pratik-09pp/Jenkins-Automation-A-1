@@ -54,7 +54,7 @@ IF %ERRORLEVEL% EQU 0 (
 )
 
 REM Return back to scripts folder
-cd scripts
+REM cd scripts
 
 echo -----------------------------------------------------
 echo GitHub push step completed!
