@@ -6,14 +6,14 @@ echo -----------------------------------------------------
 REM Move to project root
 cd ..
 
-REM Set the archive folder and destination GitHub subfolder
+REM Set important paths
 set ARCHIVE_DIR=archives
-set GITHUB_SUBFOLDER=Java-Automation-Assignment/Build-Archieves
+set DEST_DIR=Java-Automation-Assignment/Build-Archieves
 
 REM Read the PAT passed from Jenkins
 set GITHUB_PAT=%1
 
-REM Set the GitHub URL using username and dynamic PAT
+REM Set GitHub URL using username and PAT
 set GITHUB_URL=https://Pratik-09pp:%GITHUB_PAT%@github.com/Pratik-09pp/Jenkins-Automation-A-1.git
 
 REM Check if .git exists
@@ -22,16 +22,19 @@ IF NOT EXIST .git (
     exit /b 1
 )
 
-REM Assuming only one zip file in archives
+REM Find the zip file (assuming only one)
 for %%f in (%ARCHIVE_DIR%\*.zip) do set ZIP_FILE=%%f
 
-REM Add the file to Git
-git add %ARCHIVE_DIR%\%~nxZIP_FILE%
+REM Copy the zip file to Build-Archieves folder
+copy "%ZIP_FILE%" "%DEST_DIR%"
+
+REM Stage the file for commit
+git add "%DEST_DIR%\%~nxZIP_FILE%"
 
 REM Commit the change
-git commit -m "Add new build archive %~nxZIP_FILE%"
+git commit -m "Add new build archive: %~nxZIP_FILE%"
 
-REM Push the change
+REM Push to GitHub
 git push %GITHUB_URL% main
 
 IF %ERRORLEVEL% EQU 0 (
@@ -41,11 +44,11 @@ IF %ERRORLEVEL% EQU 0 (
     exit /b 1
 )
 
-REM Return to scripts
+REM Return to scripts folder
 cd scripts
 
 echo -----------------------------------------------------
 echo GitHub push step completed!
 echo -----------------------------------------------------
 
-pause 
+pause
