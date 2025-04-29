@@ -6,9 +6,12 @@ echo -----------------------------------------------------
 REM Move to project root
 cd ..
 
-REM Set important paths
+REM Move into the actual project (Java-Automation-Assignment) where .git exists
+cd Java-Automation-Assignment
+
+REM Set important paths (relative to Java-Automation-Assignment)
 set ARCHIVE_DIR=archives
-set DEST_DIR=Java-Automation-Assignment/Build-Archieves
+set DEST_DIR=../Build-Archieves
 
 REM Read the PAT passed from Jenkins
 set GITHUB_PAT=%1
@@ -22,14 +25,14 @@ IF NOT EXIST .git (
     exit /b 1
 )
 
-REM Find the zip file (assuming only one)
+REM Find the zip file (assuming only one zip)
 for %%f in (%ARCHIVE_DIR%\*.zip) do set ZIP_FILE=%%f
 
 REM Copy the zip file to Build-Archieves folder
 copy "%ZIP_FILE%" "%DEST_DIR%"
 
-REM Stage the file for commit
-git add "%DEST_DIR%\%~nxZIP_FILE%"
+REM Stage the copied file for commit
+git add "../Build-Archieves/%~nxZIP_FILE%"
 
 REM Commit the change
 git commit -m "Add new build archive: %~nxZIP_FILE%"
@@ -44,7 +47,7 @@ IF %ERRORLEVEL% EQU 0 (
     exit /b 1
 )
 
-REM Return to scripts folder
+REM Go back to scripts folder
 cd scripts
 
 echo -----------------------------------------------------
