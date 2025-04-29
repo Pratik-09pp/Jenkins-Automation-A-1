@@ -3,6 +3,7 @@ echo -----------------------------------------------------
 echo Pushing archive file to GitHub...
 echo -----------------------------------------------------
 
+set PATH=%PATH%;C:\Users\pratikp\AppData\Local\Programs\Git\cmd;C:\Users\pratikp\AppData\Local\Programs\Git\bin
 
 REM Set important paths
 set "ARCHIVE_DIR=Java-Automation-Assignment\archives"
