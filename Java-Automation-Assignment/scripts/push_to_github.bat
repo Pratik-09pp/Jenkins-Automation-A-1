@@ -2,11 +2,11 @@
 echo -----------------------------------------------------
 echo Pushing archive file to GitHub...
 echo -----------------------------------------------------
-echo cd
+cd
 REM Move to Java-Automation-Assignment folder
 cd ..
 
-echo cd
+cd
 
 REM Now you are inside Java-Automation-Assignment (No need for another cd)
 
@@ -20,7 +20,7 @@ set GITHUB_PAT=%1
 REM Set GitHub URL using username and PAT
 set GITHUB_URL=https://Pratik-09pp:%GITHUB_PAT%@github.com/Pratik-09pp/Jenkins-Automation-A-1.git
 
-echo cd
+cd
 
 
 REM Find the zip file (assuming only one zip file)
@@ -39,7 +39,7 @@ REM Push to GitHub
 git push %GITHUB_URL% main
 
 
-echo cd
+cd
 
 IF %ERRORLEVEL% EQU 0 (
     echo Archive pushed successfully to GitHub!
