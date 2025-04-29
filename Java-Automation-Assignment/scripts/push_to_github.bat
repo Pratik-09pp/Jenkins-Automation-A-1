@@ -5,6 +5,11 @@ echo -----------------------------------------------------
 
 set PATH=%PATH%;C:\Users\pratikp\AppData\Local\Programs\Git\cmd;C:\Users\pratikp\AppData\Local\Programs\Git\bin
 
+:: Set global Git identity (only needed once per environment)
+git config --global user.name "Pratik Patil"
+git config --global user.email "pratikpatil.09pp@gmail.com"
+
+
 REM Set important paths
 set "ARCHIVE_DIR=Java-Automation-Assignment\archives"
 set "DEST_DIR=Build-Archieves"
